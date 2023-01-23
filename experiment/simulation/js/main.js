@@ -1,8 +1,10 @@
 var mto = 0.5;
-var lab_imp = [],
-    dat_imp = [],
+var lab_step2 = [],
+    dat_step2 = [],
     lab_step = [],
     dat_step = [],
+    lab_step1 = [],
+    dat_step1 = [],
     lab_final = [];
 var stepeqn,impulseresponse;
 var eqn;
@@ -83,31 +85,39 @@ function addval() {
     var x1, y1;
     var ni = 0,
         di = 0;
-    a2 = parseInt(p);
+    
+    if(z2!="")
+        {
+            a2 = parseInt(p);
     b2 = parseInt(q);
 
     c2 = parseInt(r);
-    if(z2!="")
-        {
             a1 = parseInt(c);
             b1 = (z1+z2)*a1;
             c1 = a1*z1*z2;
             b2 = b2+b1;
             c2= c2+c1;
             a2=a2+a1;
-            stepresponse(a1,b1,c1, a2, b2, c2);
+            stepresponse2(a1,b1,c1, a2, b2, c2);
         }
         if(z1!="")
         {
+            a2 = parseInt(p);
+    b2 = parseInt(q);
+
+    c2 = parseInt(r);
             a1=0;
             b1 = parseInt(c);
             c1 = z1*b1;
             b2 = b2+b1;
             c2= c2+c1;
-            stepresponse(0,b1,c1, a2, b2, c2);
+            stepresponse1(0,b1,c1, a2, b2, c2);
         }
         
-        
+        a2 = parseInt(p);
+    b2 = parseInt(q);
+
+    c2 = parseInt(r);
         a1 = 0;
         b1 = 0;
         c1 = parseInt(c);
@@ -264,11 +274,27 @@ function cwidth(ms) {
         labels: labelstep,
 
         datasets: [{
-            label: "Step Response",
+            label: "Step Response 0 zero",
             data: dat_step,
             fill: false,
             pointRadius: 1,
             borderColor: 'rgb(192, 75, 192)',
+            tension: 0.1
+        },
+    {
+            label: "Step Response 1 zero",
+            data: dat_step1,
+            fill: false,
+            pointRadius: 1,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        },
+    {
+            label: "Step Response 2 zero",
+            data: dat_step2,
+            fill: false,
+            pointRadius: 1,
+            borderColor: 'rgb(192, 192, 75)',
             tension: 0.1
         }]
     };
@@ -476,88 +502,253 @@ function stepresponse(para1,parb1,parc1, para2, parb2, parc2) {
     }
 }
 
-
-function impulseresponse(b1, a2, b2, c2) {
-    lab_imp = [];
-    dat_imp = [];
-    var co1, co2, co3;
+function stepresponse1(para1,parb1,parc1, para2, parb2, parc2) {
+    lab_step1 = [];
+    dat_step1 = [];
+    var co1, co2, co3, co4;
     var stepl, maxl;
-    kpi = c2;
-    console.log(2);
-    essi = 0;
-    var det = 4 * a2 * c2 - Math.pow(b2, 2);
+    kp = parb1/parc2;
+    console.log(para1);
+    console.log(parb1);
+    console.log(parc1);
+    console.log(para2);
+    console.log(parb2);
+    console.log(parc2);
+    console.log(kp);
+    esss = 1/(1+parb1/parc2);
+    stepeqn="";
+    var det = parc2/para2-Math.pow(parb2/2/para2,2);
     if (det < 0)
         det = -1 * det;
-
     var sqd = Math.sqrt(det)
     if (det != 0) {
-        co1 = 2 * b1 / sqd;
-        co2 = -1 * b2 / 2 / a2;
-        co3 = sqd / 2 / a2;
-        impulseresponse = "$${" +co1.toFixed(2)+"*e^{"+co2.toFixed(2)+"*t}*sin({"+ co3.toFixed(2)+"*t})}$$"
-        if (amplitudei1(co1, co2, co3, 1, 10) == amplitudei1(co1, co2, co3, 1, 9.8)) {
+        co1 = parc1 / parc2;
+        co2 = (para1-co1*para2)/para2;
+        co3 = parb2/2/para2;
+        co4 = (parb1-co1*parb2)/parb2;
+        stepeqn = "$${" + co1.toFixed(2)+" - "+ co1.toFixed(2)+"*e^{-1*"+co2.toFixed(2)+"*t} &emsp;*cos("+co3.toFixed(2)+"*t) + " + co4.toFixed(2) +"*sin("+co2.toFixed(2)+"*t)}$$";
+        if (amplitudes1(co1, co2, co3, co4,sqd, 1, 10) == amplitudes1(co1, co2, co3, co4,sqd, 1, 9.8)) {
             maxl = 10;
             stepl = 0.05;
-        } else if (amplitudei1(co1, co2, co3, 1, 25) == amplitudei1(co1, co2, co3, 1, 24.5)) {
+        } else if (amplitudes1(co1, co2, co3, co4,sqd, 1, 25) == amplitudes1(co1, co2, co3, co4,sqd, 1, 24.5)) {
             maxl = 25;
             stepl = 0.125;
-        } else if (amplitudei1(co1, co2, co3, 1, 50) == amplitudei1(co1, co2, co3, 1, 49)) {
+        } else if (amplitudes1(co1, co2, co3, co4,sqd, 1, 50) == amplitudes1(co1, co2, co3, co4,sqd, 1, 49)) {
             maxl = 50;
             stepl = 0.25;
-        } else if (amplitudei1(co1, co2, co3, 1, 100) == amplitudei1(co1, co2, co3, 1, 98)) {
+        } else if (amplitudes1(co1, co2, co3, co4,sqd, 1, 100) == amplitudes1(co1, co2, co3, co4,sqd, 1, 98)) {
             maxl = 100;
             stepl = 0.5;
-        } else if (amplitudei1(co1, co2, co3, 1, 200) == amplitudei1(co1, co2, co3, 1, 196)) {
+        } else if (amplitudes1(co1, co2, co3, co4,sqd, 1, 200) == amplitudes1(co1, co2, co3, co4,sqd, 1, 196)) {
             maxl = 200;
             stepl = 1;
         } else {
             maxl = 1;
             stepl = 0.005;
         }
-        if (lab_step[lab_step.length - 1] > maxl) {
-            maxl = lab_step[lab_step.length - 1];
-            stepl = maxl / 200;
-        }
+
         for (let i = 0; i <= maxl; i = i + stepl) {
 
-            dat_imp.push(amplitudei1(co1, co2, co3, 0, i));
-            lab_imp.push(i.toFixed(1));
-            lab_final.push(i.toFixed(1));
+            dat_step1.push(amplitudes1(co1, co2, co3, co4,sqd, 0, i));
+            lab_step1.push(i.toFixed(1));
         }
+        
     } else {
-       impulseresponse = "$${" + co1.toFixed(2) +"*e^{-1*t}*t}$$";
-        co1 = 2 * b2 / b1;
-        if (amplitudei2(co1, 1, 10) == amplitudei2(co1, 1, 9.8)) {
+        co1 = parb1;
+        co2 = 2 * parb1 / parb2;
+        stepeqn = "$${ "+ co1.toFixed(2) +" - "+co1.toFixed(2)+"* e^{-1*t} + " + co2.toFixed(2)+"* t * e^{-1*t}}$$";
+        if (amplitudes2(co1, co2, 1, 10) == amplitudes2(co1, co2, 1, 9.8)) {
             maxl = 10;
             stepl = 0.05;
-        } else if (amplitudei2(co1, 1, 25) == amplitudei2(co1, 1, 24.5)) {
+        } else if (amplitudes2(co1, co2, 1, 25) == amplitudes2(co1, co2, 1, 24.5)) {
             maxl = 25;
             stepl = 0.125;
-        } else if (amplitudei2(co1, 1, 50) == amplitudei2(co1, 1, 49)) {
+        } else if (amplitudes2(co1, co2, 1, 50) == amplitudes2(co1, co2, 1, 49)) {
             maxl = 50;
             stepl = 0.25;
-        } else if (amplitudei2(co1, 1, 100) == amplitudei2(co1, 1, 98)) {
+        } else if (amplitudes2(co1, co2, 1, 100) == amplitudes2(co1, co2, 1, 98)) {
             maxl = 100;
             stepl = 0.5;
-        } else if (amplitudei2(co1, 1, 200) == amplitudei2(co1, 1, 196)) {
+        } else if (amplitudes2(co1, co2, 1, 200) == amplitudes2(co1, co2, 1, 196)) {
             maxl = 200;
             stepl = 1;
         } else {
             maxl = 1;
             stepl = 0.005;
         }
-        if (lab_step[lab_step.length - 1] > maxl) {
-            maxl = lab_step[lab_step.length - 1];
-            stepl = maxl / 200;
-        }
+
         for (let i = 0; i <= maxl; i = i + stepl) {
 
-            dat_imp.push(amplitudei2(co1, 0, i));
-            lab_imp.push(i.toFixed(1));
-            lab_final.push(i.toFixed(1));
+            dat_step1.push(amplitudes2(co1, co2, 0, i));
+            lab_step1.push(i.toFixed(1));
         }
     }
 }
+
+function stepresponse2(para1,parb1,parc1, para2, parb2, parc2) {
+    lab_step2 = [];
+    dat_step2 = [];
+    var co1, co2, co3, co4;
+    var stepl, maxl;
+    kp = parb1/parc2;
+    console.log(para1);
+    console.log(parb1);
+    console.log(parc1);
+    console.log(para2);
+    console.log(parb2);
+    console.log(parc2);
+    console.log(kp);
+    esss = 1/(1+parb1/parc2);
+    stepeqn="";
+    var det = parc2/para2-Math.pow(parb2/2/para2,2);
+    if (det < 0)
+        det = -1 * det;
+    var sqd = Math.sqrt(det)
+    if (det != 0) {
+        co1 = parc1 / parc2;
+        co2 = (para1-co1*para2)/para2;
+        co3 = parb2/2/para2;
+        co4 = (parb1-co1*parb2)/parb2;
+        stepeqn = "$${" + co1.toFixed(2)+" - "+ co1.toFixed(2)+"*e^{-1*"+co2.toFixed(2)+"*t} &emsp;*cos("+co3.toFixed(2)+"*t) + " + co4.toFixed(2) +"*sin("+co2.toFixed(2)+"*t)}$$";
+        if (amplitudes1(co1, co2, co3, co4,sqd, 1, 10) == amplitudes1(co1, co2, co3, co4,sqd, 1, 9.8)) {
+            maxl = 10;
+            stepl = 0.05;
+        } else if (amplitudes1(co1, co2, co3, co4,sqd, 1, 25) == amplitudes1(co1, co2, co3, co4,sqd, 1, 24.5)) {
+            maxl = 25;
+            stepl = 0.125;
+        } else if (amplitudes1(co1, co2, co3, co4,sqd, 1, 50) == amplitudes1(co1, co2, co3, co4,sqd, 1, 49)) {
+            maxl = 50;
+            stepl = 0.25;
+        } else if (amplitudes1(co1, co2, co3, co4,sqd, 1, 100) == amplitudes1(co1, co2, co3, co4,sqd, 1, 98)) {
+            maxl = 100;
+            stepl = 0.5;
+        } else if (amplitudes1(co1, co2, co3, co4,sqd, 1, 200) == amplitudes1(co1, co2, co3, co4,sqd, 1, 196)) {
+            maxl = 200;
+            stepl = 1;
+        } else {
+            maxl = 1;
+            stepl = 0.005;
+        }
+
+        for (let i = 0; i <= maxl; i = i + stepl) {
+
+            dat_step2.push(amplitudes1(co1, co2, co3, co4,sqd, 0, i));
+            lab_step2.push(i.toFixed(1));
+        }
+        
+    } else {
+        co1 = parb1;
+        co2 = 2 * parb1 / parb2;
+        stepeqn = "$${ "+ co1.toFixed(2) +" - "+co1.toFixed(2)+"* e^{-1*t} + " + co2.toFixed(2)+"* t * e^{-1*t}}$$";
+        if (amplitudes2(co1, co2, 1, 10) == amplitudes2(co1, co2, 1, 9.8)) {
+            maxl = 10;
+            stepl = 0.05;
+        } else if (amplitudes2(co1, co2, 1, 25) == amplitudes2(co1, co2, 1, 24.5)) {
+            maxl = 25;
+            stepl = 0.125;
+        } else if (amplitudes2(co1, co2, 1, 50) == amplitudes2(co1, co2, 1, 49)) {
+            maxl = 50;
+            stepl = 0.25;
+        } else if (amplitudes2(co1, co2, 1, 100) == amplitudes2(co1, co2, 1, 98)) {
+            maxl = 100;
+            stepl = 0.5;
+        } else if (amplitudes2(co1, co2, 1, 200) == amplitudes2(co1, co2, 1, 196)) {
+            maxl = 200;
+            stepl = 1;
+        } else {
+            maxl = 1;
+            stepl = 0.005;
+        }
+
+        for (let i = 0; i <= maxl; i = i + stepl) {
+
+            dat_step2.push(amplitudes2(co1, co2, 0, i));
+            lab_step2.push(i.toFixed(1));
+        }
+    }
+}
+
+// function impulseresponse(b1, a2, b2, c2) {
+//     lab_imp = [];
+//     dat_imp = [];
+//     var co1, co2, co3;
+//     var stepl, maxl;
+//     kpi = c2;
+//     console.log(2);
+//     essi = 0;
+//     var det = 4 * a2 * c2 - Math.pow(b2, 2);
+//     if (det < 0)
+//         det = -1 * det;
+
+//     var sqd = Math.sqrt(det)
+//     if (det != 0) {
+//         co1 = 2 * b1 / sqd;
+//         co2 = -1 * b2 / 2 / a2;
+//         co3 = sqd / 2 / a2;
+//         impulseresponse = "$${" +co1.toFixed(2)+"*e^{"+co2.toFixed(2)+"*t}*sin({"+ co3.toFixed(2)+"*t})}$$"
+//         if (amplitudei1(co1, co2, co3, 1, 10) == amplitudei1(co1, co2, co3, 1, 9.8)) {
+//             maxl = 10;
+//             stepl = 0.05;
+//         } else if (amplitudei1(co1, co2, co3, 1, 25) == amplitudei1(co1, co2, co3, 1, 24.5)) {
+//             maxl = 25;
+//             stepl = 0.125;
+//         } else if (amplitudei1(co1, co2, co3, 1, 50) == amplitudei1(co1, co2, co3, 1, 49)) {
+//             maxl = 50;
+//             stepl = 0.25;
+//         } else if (amplitudei1(co1, co2, co3, 1, 100) == amplitudei1(co1, co2, co3, 1, 98)) {
+//             maxl = 100;
+//             stepl = 0.5;
+//         } else if (amplitudei1(co1, co2, co3, 1, 200) == amplitudei1(co1, co2, co3, 1, 196)) {
+//             maxl = 200;
+//             stepl = 1;
+//         } else {
+//             maxl = 1;
+//             stepl = 0.005;
+//         }
+//         if (lab_step[lab_step.length - 1] > maxl) {
+//             maxl = lab_step[lab_step.length - 1];
+//             stepl = maxl / 200;
+//         }
+//         for (let i = 0; i <= maxl; i = i + stepl) {
+
+//             dat_imp.push(amplitudei1(co1, co2, co3, 0, i));
+//             lab_imp.push(i.toFixed(1));
+//             lab_final.push(i.toFixed(1));
+//         }
+//     } else {
+//        impulseresponse = "$${" + co1.toFixed(2) +"*e^{-1*t}*t}$$";
+//         co1 = 2 * b2 / b1;
+//         if (amplitudei2(co1, 1, 10) == amplitudei2(co1, 1, 9.8)) {
+//             maxl = 10;
+//             stepl = 0.05;
+//         } else if (amplitudei2(co1, 1, 25) == amplitudei2(co1, 1, 24.5)) {
+//             maxl = 25;
+//             stepl = 0.125;
+//         } else if (amplitudei2(co1, 1, 50) == amplitudei2(co1, 1, 49)) {
+//             maxl = 50;
+//             stepl = 0.25;
+//         } else if (amplitudei2(co1, 1, 100) == amplitudei2(co1, 1, 98)) {
+//             maxl = 100;
+//             stepl = 0.5;
+//         } else if (amplitudei2(co1, 1, 200) == amplitudei2(co1, 1, 196)) {
+//             maxl = 200;
+//             stepl = 1;
+//         } else {
+//             maxl = 1;
+//             stepl = 0.005;
+//         }
+//         if (lab_step[lab_step.length - 1] > maxl) {
+//             maxl = lab_step[lab_step.length - 1];
+//             stepl = maxl / 200;
+//         }
+//         for (let i = 0; i <= maxl; i = i + stepl) {
+
+//             dat_imp.push(amplitudei2(co1, 0, i));
+//             lab_imp.push(i.toFixed(1));
+//             lab_final.push(i.toFixed(1));
+//         }
+//     }
+// }
 
 
 
