@@ -32,16 +32,21 @@
 					<input type="range" name="valuea"  min="0" max="5" list = "datlist" id="denc" onchange="showval() " value="0" onmousemove="showval()" class="range-input">
 					<p>r:<span id="lr"></span></p>
 				</div>
-				<button id="addzero" >Add Zero</button>
-				<button id="delzero">Delete Zero</button>
+				
 				
 				<div class="val-input">
-					<input type="number" name="real_val_zero" id="zr" class="input-val" min="0">
+					
+					<input type="number" name="real_val_zero" id="zr" class="input-val" >
 					<p>&emsp;+&emsp;</p>
 					<input type="number" name="imaginary_value_zero" id="zi" class="input-val" >
 					<p>&emsp;i</p> 
+					<span id="viewzero"></span>
+					<div class="zerodiv">
+					<button id="addzero" class="zerobtn">Add Zero</button>
+					<button id="delzero" class="zerobtn">Delete Zero</button>
+					</div>
 				</div>
-				<span id="viewzero">hello</span>
+				
 				<button id="input_value" onclick="addval();">Submit</button>
 			<datalist id="datlist">
 				<option value="0" label="0%"></option>
