@@ -35,7 +35,12 @@
 				<button id="addzero" >Add Zero</button>
 				<button id="delzero">Delete Zero</button>
 				
-				<input id="zero_val" type="number">
+				<div class="val-input">
+					<input type="number" name="real_val_zero" id="zr" class="input-val" min="0">
+					<p>&emsp;+&emsp;</p>
+					<input type="number" name="imaginary_value_zero" id="zi" class="input-val" >
+					<p>&emsp;i</p> 
+				</div>
 				<span id="viewzero">hello</span>
 				<button id="input_value" onclick="addval();">Submit</button>
 			<datalist id="datlist">

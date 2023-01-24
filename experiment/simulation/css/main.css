@@ -138,7 +138,19 @@ body {
     height:10px;
     width: 100%;
 }
-
+.val-input{
+    height: auto;
+    width: 100%;
+      }
+      .val-input h4{
+        display: inline-block;
+        margin: 10px 0px;}
+      .val-input p{
+        display: inline-block;
+        margin: 10px 0px;}
+.input-val{
+    display: inline-block;
+    width: 40px;}
 #input_value:hover {
     opacity: 0.9;
     cursor: pointer;
