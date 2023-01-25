@@ -426,6 +426,9 @@ header {
     .prog-window {
         height: 70%;
     }
+    .matlab-working{
+        margin-top: 15vh;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -440,11 +443,14 @@ header {
 
 @media screen and (max-height: 450px) {
     #input-statements {
-        height: 105vh;
+        height: 140vh;
     }
     .matlab-working {
-        margin-top: 35vh;
+        margin-top: 45vh;
         height: 92vh;
+    }
+    .conclusions{
+        height:20vh
     }
 }
 
