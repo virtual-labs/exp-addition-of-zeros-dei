@@ -233,6 +233,7 @@ function addval() {
     // console.log(c2);
 
             stepresponse2(a1,b1,c1, a2, b2, c2);
+            document.getElementById("out4").innerHTML = eqn;
     }
     else
     {if(z2r!="")
@@ -281,7 +282,7 @@ function addval() {
         }
         document.getElementById("out4").innerHTML = eqn;
         eqn ="Not enough Zeroes";
-        if(z1r!="")
+        if(z1r!="" && z1i=="")
         {
             a2 = parseInt(p);
     b2 = parseInt(q);
@@ -324,8 +325,8 @@ function addval() {
         console.log(eqn);
         
             stepresponse1(0,b1,c1, a2, b2, c2);
-        }}
-        document.getElementById("out3").innerHTML = eqn;
+        }document.getElementById("out3").innerHTML = eqn;}
+        
         
     //impulseresponse(b1, a2, b2, c2);
 
