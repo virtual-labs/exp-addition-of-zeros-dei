@@ -6,8 +6,9 @@ var lab_step2 = [],
     lab_step1 = [],
     dat_step1 = [],
     lab_final = [];
+var tanswer="";
 var final_step;
-var stepeqn,impulseresponse;
+var step1eqn="",step2eqn="",step0eqn="";
 var eqn;
 var poles = [],
    roots = [];
@@ -115,6 +116,7 @@ function zeroremover(){
     }
 }
 function addval() {
+    tanswer="";
     lab_step2 = [];
     dat_step2 = [];
     lab_step = [];
@@ -128,6 +130,25 @@ function addval() {
     var r = document.getElementById("denc").value;
     var p = document.getElementById("dena").value;
     var q = document.getElementById("denb").value;
+    var numerator = "$${\\frac{";
+    numerator=numerator + c+"}";
+    var denominator = "{";
+    if (p != 0)
+        denominator = denominator + p + "s^2";
+    if (q!= 0)
+        if (p != 0)
+            denominator = denominator + " + " + q + "s";
+        else
+            denominator = denominator + q + "s";
+    if (r != 0)
+        if (q != 0)
+            denominator = denominator + " + " + r;
+        else
+            denominator = denominator + r;
+    denominator = denominator + "}}$$";
+    var eqn = numerator + denominator;
+    console.log(eqn);
+    document.getElementById("out1").innerHTML = eqn;
     roots = [];
     poles = [];
     var x1, y1;
@@ -142,7 +163,27 @@ function addval() {
         c1 = parseInt(c);
         
     c2= c2+c1;
+    var numerator = "$${\\frac{";
+        numerator=numerator + c+"}";
+        var denominator = "{";
+        if (a2 != 0)
+            denominator = denominator + a2.toFixed(0) + "s^2";
+        if (b2 != 0)
+            if (a2 != 0)
+                denominator = denominator + " + " + b2.toFixed(0) + "s";
+            else
+                denominator = denominator + b2.toFixed(0) + "s";
+        if (c2 != 0)
+            if (b2 != 0)
+                denominator = denominator + " + " + c2.toFixed(0);
+            else
+                denominator = denominator + c2.toFixed(0);
+        denominator = denominator + "}}$$";
+        var eqn = numerator + denominator;
+        console.log(eqn);
+        document.getElementById("out2").innerHTML = eqn;
     stepresponse(a1,b1,c1, a2, b2, c2);
+    eqn ="Not enough Zeroes";
     if(z1i!="")
     {
         a2 = parseInt(p);
@@ -155,12 +196,42 @@ function addval() {
             b2 = b2+b1;
             c2= c2+c1;
             a2=a2+a1;
-            console.log(a1);
-    console.log(b1);
-    console.log(c1);
-    console.log(a2);
-    console.log(b2);
-    console.log(c2);
+             numerator = "$${\\frac{";
+        if (a1 != 0)
+            numerator = numerator + a1.toFixed(0) + "s^2";
+        if (b1 != 0)
+            if (a1 != 0)
+                numerator = numerator + " + " + b1.toFixed(0)+"s";
+            else
+                numerator = numerator + b1.toFixed(0)+"s";
+        if (c1 != 0)
+            if (b1 != 0)
+                numerator = numerator + " + " + c1.toFixed(0);
+            else
+                numerator = numerator + c1.toFixed(0);
+        numerator = numerator + "}";
+         denominator = "{";
+        if (a2 != 0)
+            denominator = denominator + a2.toFixed(0) + "s^2";
+        if (b2 != 0)
+            if (a2 != 0)
+                denominator = denominator + " + " + b2.toFixed(0) + "s";
+            else
+                denominator = denominator + b2.toFixed(0) + "s";
+        if (c2 != 0)
+            if (b2 != 0)
+                denominator = denominator + " + " + c2.toFixed(0);
+            else
+                denominator = denominator + c2.toFixed(0);
+        denominator = denominator + "}}$$";
+        eqn = numerator + denominator;
+    //         console.log(a1);
+    // console.log(b1);
+    // console.log(c1);
+    // console.log(a2);
+    // console.log(b2);
+    // console.log(c2);
+
             stepresponse2(a1,b1,c1, a2, b2, c2);
     }
     else
@@ -176,8 +247,40 @@ function addval() {
             b2 = b2+b1;
             c2= c2+c1;
             a2=a2+a1;
+            numerator = "$${\\frac{";
+            if (a1 != 0)
+            numerator = numerator + a1.toFixed(0) + "s^2";
+            if (b1 != 0)
+            if (a1 != 0)
+                numerator = numerator + " + " + b1.toFixed(0)+"s";
+            else
+                numerator = numerator + b1.toFixed(0)+"s";
+        if (c1 != 0)
+            if (b1 != 0)
+                numerator = numerator + " + " + c1.toFixed(0);
+            else
+                numerator = numerator + c1.toFixed(0);
+        numerator = numerator + "}";
+         denominator = "{";
+        if (a2 != 0)
+            denominator = denominator + a2.toFixed(0) + "s^2";
+        if (b2 != 0)
+            if (a2 != 0)
+                denominator = denominator + " + " + b2.toFixed(0) + "s";
+            else
+                denominator = denominator + b2.toFixed(0) + "s";
+        if (c2 != 0)
+            if (b2 != 0)
+                denominator = denominator + " + " + c2.toFixed(0);
+            else
+                denominator = denominator + c2.toFixed(0);
+        denominator = denominator + "}}$$";
+        eqn = numerator + denominator;
+        
             stepresponse2(a1,b1,c1, a2, b2, c2);
         }
+        document.getElementById("out4").innerHTML = eqn;
+        eqn ="Not enough Zeroes";
         if(z1r!="")
         {
             a2 = parseInt(p);
@@ -189,9 +292,40 @@ function addval() {
             c1 = z1r*b1;
             b2 = b2+b1;
             c2= c2+c1;
+            numerator = "$${\\frac{";
+            if (a1 != 0)
+            numerator = numerator + a1.toFixed(0) + "s^2";
+            if (b1 != 0)
+            if (a1 != 0)
+                numerator = numerator + " + " + b1.toFixed(0)+"s";
+            else
+                numerator = numerator + b1.toFixed(0)+"s";
+        if (c1 != 0)
+            if (b1 != 0)
+                numerator = numerator + " + " + c1.toFixed(0);
+            else
+                numerator = numerator + c1.toFixed(0);
+        numerator = numerator + "}";
+         denominator = "{";
+        if (a2 != 0)
+            denominator = denominator + a2.toFixed(0) + "s^2";
+        if (b2 != 0)
+            if (a2 != 0)
+                denominator = denominator + " + " + b2.toFixed(0) + "s";
+            else
+                denominator = denominator + b2.toFixed(0) + "s";
+        if (c2 != 0)
+            if (b2 != 0)
+                denominator = denominator + " + " + c2.toFixed(0);
+            else
+                denominator = denominator + c2.toFixed(0);
+        denominator = denominator + "}}$$";
+        eqn = numerator + denominator;
+        console.log(eqn);
+        
             stepresponse1(0,b1,c1, a2, b2, c2);
         }}
-        
+        document.getElementById("out3").innerHTML = eqn;
         
     //impulseresponse(b1, a2, b2, c2);
 
@@ -201,7 +335,7 @@ function addval() {
     document.getElementById("chartcont").setAttribute("style", "display:none");
     document.getElementById("tanswer").setAttribute("style", "display:none;");
     document.getElementById("chartcont1").setAttribute("style", "display:none;");
-    for (let i = 1; i < 3; i++) {
+    for (let i = 1; i < 5; i++) {
         let out = "out" + i;
         let ln = "line" + (i + 1);
         document.getElementById(ln).setAttribute("Style", "color:black");
@@ -266,10 +400,12 @@ function addval() {
         var ms = window.matchMedia("(max-width:950px)");
         cwidth(ms);
         ms.addListener(cwidth);
-
+        console.log(tanswer);
+        document.getElementById("tanswer").innerHTML=tanswer;
        MathJax.Hub.Queue(["Typeset", MathJax.Hub, "out1"]);
        MathJax.Hub.Queue(["Typeset", MathJax.Hub, "out2"]);
        MathJax.Hub.Queue(["Typeset", MathJax.Hub, "out3"]);
+       MathJax.Hub.Queue(["Typeset", MathJax.Hub, "out4"]);
        MathJax.Hub.Queue(["Typeset", MathJax.Hub, "tanswer"]);
     } else {
         mto = 1;
@@ -303,13 +439,13 @@ function genval(idofinput, idofspan) {
 
 var lc = 1;
 
-function runprog(i) {
+function runprog() {
     lc = lc + 1;
-    if (lc <= 3)
+    if (lc <= 5)
         highlightline(lc);
     else {
         document.getElementById("fconclusions").innerHTML = conclusion;
-        document.getElementById("line3").setAttribute("style", "color:black;");
+        document.getElementById("line5").setAttribute("style", "color:black;");
         document.getElementById("mrun").disabled = true;
         var ms = window.matchMedia("screen and (max-width:950px)");
         widthcheck(ms);
@@ -393,50 +529,6 @@ function cwidth(ms) {
             },
         }
     });
-    // const labelimp = lab_imp;
-    // const dataimp = {
-    //     labels: labelimp,
-
-    //     datasets: [{
-    //         label: "Impulse Response",
-    //         data: dat_imp,
-    //         fill: false,
-    //         pointRadius: 1,
-    //         borderColor: 'rgb(75, 192, 192)',
-    //         tension: 0.1
-    //     }]
-    // };
-    // window.ch2 = new Chart(chartplot2, {
-    //     type: "line",
-    //     data: dataimp,
-    //     options: {
-    //         title: {
-    //             display: true,
-    //             text: "Impulse Response",
-    //             fontSize: 14,
-    //         },
-    //         maintainAspectRatio: false,
-    //         scales: {
-    //             xAxes: [{
-    //                 scaleLabel: {
-    //                     display: "Time" !== ' ',
-    //                     labelString: "Time"
-    //                 },
-
-    //             }],
-    //             yAxes: [{
-    //                 stacked: false, // `true` for stacked area chart, `false` otherwise
-    //                 beginAtZero: false,
-    //                 scaleLabel: {
-    //                     display: "Amplitude" !== '',
-    //                     labelString: "Amplitude"
-    //                 },
-
-
-    //             }]
-    //         },
-    //     }
-    // });
     
     
 }
@@ -454,7 +546,8 @@ function widthcheck(ms) {
 
 function highlightline(l) {
     var ln = "line" + l;
-    var out = "out" + l;
+    var out = "out" + parseInt(l-1);
+    console.log(out);
     document.getElementById(ln).setAttribute("style", "color:blue;");
     document.getElementById(out).setAttribute("style", "display:block;");
     if (lc != 1)
@@ -486,7 +579,7 @@ function dispmenu(val) {
 function stepresponse2(para1,parb1,parc1, para2, parb2, parc2) {
     lab_step2 = [];
     dat_step2 = [];
-    var co1, co2, co3, co4;
+    var co1, co2, co3, co4,co5;
     var stepl, maxl;
     kp = parb1/parc2;
     // console.log(para1);
@@ -497,7 +590,7 @@ function stepresponse2(para1,parb1,parc1, para2, parb2, parc2) {
     // console.log(parc2);
     // console.log(kp);
     esss = 1/(1+parb1/parc2);
-    stepeqn="";
+    step2eqn="";
     var det = parc2/para2-Math.pow(parb2/2/para2,2);
     if (det < 0)
         det = -1 * det;
@@ -507,7 +600,10 @@ function stepresponse2(para1,parb1,parc1, para2, parb2, parc2) {
         co2 = (para1-co1*para2)/para2;
         co3 = parb2/2/para2;
         co4 = (parb1-co1*parb2)/parb2;
-        stepeqn = "$${" + co1.toFixed(2)+" - "+ co1.toFixed(2)+"*e^{-1*"+co2.toFixed(2)+"*t} &emsp;*cos("+co3.toFixed(2)+"*t) + " + co4.toFixed(2) +"*sin("+co2.toFixed(2)+"*t)}$$";
+        co5 = co2*(co4/co2-co3);
+        step2eqn = "$${" + co1.toFixed(2)+" - "+ co2.toFixed(2)+"*e^{-1*"+co3.toFixed(2)+"*t} &emsp;*cos("+sqd.toFixed(2)+"*t) + " + co5.toFixed(2) +"*e^{-1*"+co3.toFixed(2)+"*t} &emsp;*sin("+sqd.toFixed(2)+"*t)}$$";
+        tanswer=tanswer+"Step Response of function with 2 zeroes"+step2eqn;
+        console.log(tanswer);
         if(lab_final.length!=0){
             maxl = lab_final[lab_final.length-1];
             stepl=final_step;
@@ -545,7 +641,8 @@ function stepresponse2(para1,parb1,parc1, para2, parb2, parc2) {
     } else {
         co1 = parb1;
         co2 = 2 * parb1 / parb2;
-        stepeqn = "$${ "+ co1.toFixed(2) +" - "+co1.toFixed(2)+"* e^{-1*t} + " + co2.toFixed(2)+"* t * e^{-1*t}}$$";
+        step2eqn = "$${ "+ co1.toFixed(2) +" - "+co1.toFixed(2)+"* e^{-1*t} + " + co2.toFixed(2)+"* t * e^{-1*t}}$$";
+        tanswer=tanswer+"Step Response of function with 2 zeroes"+step2eqn;
         if(lab_final.length!=0){
             maxl = lab_final[lab_final.length-1];
             stepl=final_step;
@@ -584,7 +681,7 @@ function stepresponse2(para1,parb1,parc1, para2, parb2, parc2) {
 function stepresponse1(para1,parb1,parc1, para2, parb2, parc2) {
     lab_step1 = [];
     dat_step1 = [];
-    var co1, co2, co3, co4;
+    var co1, co2, co3, co4,co5;
     var stepl, maxl;
     kp = parb1/parc2;
     // console.log(para1);
@@ -595,7 +692,7 @@ function stepresponse1(para1,parb1,parc1, para2, parb2, parc2) {
     // console.log(parc2);
     console.log(kp);
     esss = 1/(1+parb1/parc2);
-    stepeqn="";
+    step1eqn="";
     var det = parc2/para2-Math.pow(parb2/2/para2,2);
     if (det < 0)
         det = -1 * det;
@@ -605,8 +702,9 @@ function stepresponse1(para1,parb1,parc1, para2, parb2, parc2) {
         co2 = (para1-co1*para2)/para2;
         co3 = parb2/2/para2;
         co4 = (parb1-co1*parb2)/parb2;
-        
-        stepeqn = "$${" + co1.toFixed(2)+" - "+ co1.toFixed(2)+"*e^{-1*"+co2.toFixed(2)+"*t} &emsp;*cos("+co3.toFixed(2)+"*t) + " + co4.toFixed(2) +"*sin("+co2.toFixed(2)+"*t)}$$";
+        co5 = co2*(co4/co2-co3);
+        step1eqn = "$${" + co1.toFixed(2)+" - "+ co2.toFixed(2)+"*e^{-1*"+co3.toFixed(2)+"*t} &emsp;*cos("+sqd.toFixed(2)+"*t) + " + co5.toFixed(2) +"*e^{-1*"+co3.toFixed(2)+"*t} &emsp;*sin("+sqd.toFixed(2)+"*t)}$$";
+        tanswer=tanswer+"Step Response of function with 1 zeroes"+step1eqn;
         if(lab_final.length!=0){
             maxl = lab_final[lab_final.length-1];
             stepl=final_step;
@@ -644,7 +742,8 @@ function stepresponse1(para1,parb1,parc1, para2, parb2, parc2) {
     } else {
         co1 = parb1;
         co2 = 2 * parb1 / parb2;
-        stepeqn = "$${ "+ co1.toFixed(2) +" - "+co1.toFixed(2)+"* e^{-1*t} + " + co2.toFixed(2)+"* t * e^{-1*t}}$$";
+        step1eqn = "$${ "+ co1.toFixed(2) +" - "+co1.toFixed(2)+"* e^{-1*t} + " + co2.toFixed(2)+"* t * e^{-1*t}}$$";
+        tanswer=tanswer+"Step Response of function with 1 zeroes"+step1eqn;
         if(lab_final.length!=0){
             maxl = lab_final[lab_final.length-1];
             stepl=final_step;
@@ -683,7 +782,7 @@ function stepresponse1(para1,parb1,parc1, para2, parb2, parc2) {
 function stepresponse(para1,parb1,parc1, para2, parb2, parc2) {
     lab_step = [];
     dat_step = [];
-    var co1, co2, co3, co4;
+    var co1, co2, co3, co4,co5;
     var stepl, maxl;
     kp = parb1/parc2;
     console.log(para1);
@@ -694,7 +793,7 @@ function stepresponse(para1,parb1,parc1, para2, parb2, parc2) {
     console.log(parc2);
     // console.log(kp);
     esss = 1/(1+parb1/parc2);
-    stepeqn="";
+    step0eqn="";
     var det = parc2/para2-Math.pow(parb2/2/para2,2);
     if (det < 0)
         det = -1 * det;
@@ -704,12 +803,14 @@ function stepresponse(para1,parb1,parc1, para2, parb2, parc2) {
         co2 = (para1-co1*para2)/para2;
         co3 = parb2/2/para2;
         co4 = (parb1-co1*parb2)/parb2;
+        co5 = co2*(co4/co2-co3);
         console.log(co1);
         console.log(co2);
         console.log(co3);
         console.log(co4);
         console.log(sqd);
-        stepeqn = "$${" + co1.toFixed(2)+" - "+ co1.toFixed(2)+"*e^{-1*"+co2.toFixed(2)+"*t} &emsp;*cos("+co3.toFixed(2)+"*t) + " + co4.toFixed(2) +"*sin("+co2.toFixed(2)+"*t)}$$";
+        step0eqn = "$${" + co1.toFixed(2)+" - "+ co2.toFixed(2)+"*e^{-1*"+co3.toFixed(2)+"*t} &emsp;*cos("+sqd.toFixed(2)+"*t) + " + co5.toFixed(2) +"*e^{-1*"+co3.toFixed(2)+"*t} &emsp;*sin("+sqd.toFixed(2)+"*t)}$$";
+        tanswer=tanswer+"Step Response of function with 0 zeroes"+step0eqn;
         if (amplitudes1(co1, co2, co3, co4,sqd, 1, 10) == amplitudes1(co1, co2, co3, co4,sqd, 1, 9.8)) {
             maxl = 10;
             stepl = 0.05;
@@ -741,7 +842,8 @@ function stepresponse(para1,parb1,parc1, para2, parb2, parc2) {
     } else {
         co1 = parb1;
         co2 = 2 * parb1 / parb2;
-        stepeqn = "$${ "+ co1.toFixed(2) +" - "+co1.toFixed(2)+"* e^{-1*t} + " + co2.toFixed(2)+"* t * e^{-1*t}}$$";
+        step0eqn = "$${ "+ co1.toFixed(2) +" - "+co1.toFixed(2)+"* e^{-1*t} + " + co2.toFixed(2)+"* t * e^{-1*t}}$$";
+        tanswer=tanswer+"Step Response of function with 0 zeroes"+step0eqn;
         if (amplitudes2(co1, co2, 1, 10) == amplitudes2(co1, co2, 1, 9.8)) {
             maxl = 10;
             stepl = 0.05;
@@ -772,106 +874,8 @@ function stepresponse(para1,parb1,parc1, para2, parb2, parc2) {
     }
 }
 
-// function impulseresponse(b1, a2, b2, c2) {
-//     lab_imp = [];
-//     dat_imp = [];
-//     var co1, co2, co3;
-//     var stepl, maxl;
-//     kpi = c2;
-//     console.log(2);
-//     essi = 0;
-//     var det = 4 * a2 * c2 - Math.pow(b2, 2);
-//     if (det < 0)
-//         det = -1 * det;
-
-//     var sqd = Math.sqrt(det)
-//     if (det != 0) {
-//         co1 = 2 * b1 / sqd;
-//         co2 = -1 * b2 / 2 / a2;
-//         co3 = sqd / 2 / a2;
-//         impulseresponse = "$${" +co1.toFixed(2)+"*e^{"+co2.toFixed(2)+"*t}*sin({"+ co3.toFixed(2)+"*t})}$$"
-//         if (amplitudei1(co1, co2, co3, 1, 10) == amplitudei1(co1, co2, co3, 1, 9.8)) {
-//             maxl = 10;
-//             stepl = 0.05;
-//         } else if (amplitudei1(co1, co2, co3, 1, 25) == amplitudei1(co1, co2, co3, 1, 24.5)) {
-//             maxl = 25;
-//             stepl = 0.125;
-//         } else if (amplitudei1(co1, co2, co3, 1, 50) == amplitudei1(co1, co2, co3, 1, 49)) {
-//             maxl = 50;
-//             stepl = 0.25;
-//         } else if (amplitudei1(co1, co2, co3, 1, 100) == amplitudei1(co1, co2, co3, 1, 98)) {
-//             maxl = 100;
-//             stepl = 0.5;
-//         } else if (amplitudei1(co1, co2, co3, 1, 200) == amplitudei1(co1, co2, co3, 1, 196)) {
-//             maxl = 200;
-//             stepl = 1;
-//         } else {
-//             maxl = 1;
-//             stepl = 0.005;
-//         }
-//         if (lab_step[lab_step.length - 1] > maxl) {
-//             maxl = lab_step[lab_step.length - 1];
-//             stepl = maxl / 200;
-//         }
-//         for (let i = 0; i <= maxl; i = i + stepl) {
-
-//             dat_imp.push(amplitudei1(co1, co2, co3, 0, i));
-//             lab_imp.push(i.toFixed(1));
-//             lab_final.push(i.toFixed(1));
-//         }
-//     } else {
-//        impulseresponse = "$${" + co1.toFixed(2) +"*e^{-1*t}*t}$$";
-//         co1 = 2 * b2 / b1;
-//         if (amplitudei2(co1, 1, 10) == amplitudei2(co1, 1, 9.8)) {
-//             maxl = 10;
-//             stepl = 0.05;
-//         } else if (amplitudei2(co1, 1, 25) == amplitudei2(co1, 1, 24.5)) {
-//             maxl = 25;
-//             stepl = 0.125;
-//         } else if (amplitudei2(co1, 1, 50) == amplitudei2(co1, 1, 49)) {
-//             maxl = 50;
-//             stepl = 0.25;
-//         } else if (amplitudei2(co1, 1, 100) == amplitudei2(co1, 1, 98)) {
-//             maxl = 100;
-//             stepl = 0.5;
-//         } else if (amplitudei2(co1, 1, 200) == amplitudei2(co1, 1, 196)) {
-//             maxl = 200;
-//             stepl = 1;
-//         } else {
-//             maxl = 1;
-//             stepl = 0.005;
-//         }
-//         if (lab_step[lab_step.length - 1] > maxl) {
-//             maxl = lab_step[lab_step.length - 1];
-//             stepl = maxl / 200;
-//         }
-//         for (let i = 0; i <= maxl; i = i + stepl) {
-
-//             dat_imp.push(amplitudei2(co1, 0, i));
-//             lab_imp.push(i.toFixed(1));
-//             lab_final.push(i.toFixed(1));
-//         }
-//     }
-// }
 
 
-
-function amplitudei2(v1, str, t) {
-    var cal = v1 * Math.pow(Math.E,-1 * t) * t;
-    if (str)
-        return cal.toFixed(4);
-    else
-        return cal;
-}
-
-function amplitudei1(v1, v2, v3, str, t) {
-    var cal;
-    cal = v1 * (Math.pow(Math.E, t * v2) * Math.sin(v3 * t));
-    if (str)
-        return cal.toFixed(4);
-    else
-        return cal;
-}
 
 function amplitudes1(v1, v2, v3, v4,v5, str, t) {
     var cal = v2*Math.pow(Math.E,-1*v3*t)*Math.cos(v5*t)+v2*(v4/v2-v3)*Math.pow(Math.E,-1*v3*t)*Math.sin(v5*t)/v5+v1;
@@ -889,23 +893,7 @@ function amplitudes2(v1, v2, str, t) {
         return cal;
 }
 
-function amplituder1(v1, v2, v3, v4, v5, t) {
-    var cal = -1 * v1 + v2 * t + v1 * Math.pow(Math.E, -1 * v3 * t) * Math.cosh(v4 * t) + v5 * Math.sinh(v4 * t);
-    return cal;
-}
 
-function amplituder2(v1, v2, t) {
-    var cal = -1 * v1 + v2 * t + v1 * Math.pow(Math.E, -1 * t) + v2 * t * Math.pow(Math.E, -1 * t);
-    return cal;
-}
 
-function amplitud(a3, b3, b4, c1, c3, c4, t) {
-    var cal;
-    if (c1 < 0) {
-        cal = a3 + b3 * Math.pow(Math.E, c3 * t) * Math.cosh(c4 * t) + b4 * Math.pow(Math.E, c3 * t) * Math.sinh(c4 * t)
-    } else {
-        cal = a3 + b3 * Math.pow(Math.E, c3 * t) * Math.cos(c4 * t) + b4 * Math.pow(Math.E, c3 * t) * Math.sin(c4 * t)
-    }
-    return cal;
-}
+
 
