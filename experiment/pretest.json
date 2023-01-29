@@ -2,35 +2,57 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Equating the numerator to zero gives ___ and equating denominator to zero gives us ___ ?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Poles, Zeroes",
+        "b": "Zeroes, Poles",
+        "c": "Poles only",
+        "d": "Zeroes only"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "A transfer function has two zeroes at infinity. <br> The numerator degree (N) and denominator degree (M) are related as : ",
+      "answers": {
+        "a": "N = M - 1",
+        "b": "M = N - 2",
+        "c": "M = N - 1",
+        "d": "N = M - 2"
+      },
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "The principle of homogeneity and principle of superposition are applicable to ",
+      "answers": {
+        "a": "Linear Time Invariant System",
+        "b": "Linear Time Variant System",
+        "c": "Nonlinear Time Invariant System",
+        "d": "Nonlinear Time Variant System"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
-    {
-      "question": "This is a Sample Question 2?",
+        {
+      "question": "The transfer function of is the ratio of",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Laplace transform of Input to that of the Output",
+        "b": "Fourier transform of Input to that of the Output",
+        "c": "Laplace transform of Output to that of the Input",
+        "d": "Fourier transform of Output to that of the Input"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+        {
+      "question": "Which of the following statement is correct?",
+      "answers": {
+        "a": "The value of transfer function is zero at poles.",
+        "b": "The value of transfer function is infinity at zeroes.",
+        "c": "The value of transfer function is infinity at poles.",
+        "d": "None of the above"
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
