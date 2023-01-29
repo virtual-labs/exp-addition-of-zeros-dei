@@ -425,9 +425,10 @@ header {
     .prog-window {
         height: 70%;
     }
+    @media screen and (max-width: 680px) {
     .matlab-working{
         margin-top: 15vh;
-    }
+    }}
 }
 
 @media screen and (max-width: 550px) {
