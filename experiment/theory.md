@@ -8,7 +8,10 @@ Addition of zero to forward path transfer function:<br>
 When we add a zero the forward path transfer function becomes,<br>
 
 <img src="./images/exp5eq2.png">
+<br>
 <img src="./images/exp5eq3.png">
-<img src="./images/exp5eq4.png">
-<img src="./images/exp5eq5.png">
+<br>
+<img src="./images/exp5seq4.png">
+<br>
+<img src="./images/exp5seq5.png">
 
