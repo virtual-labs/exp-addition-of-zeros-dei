@@ -41,7 +41,7 @@ function zeroadder(){
             zeroval =2;
             if(zerosr!="")
             {
-                z1r = parseFloat(zerosr);
+                z1r =-1* parseFloat(zerosr);
                 z2r = z1r;
             }
             else
@@ -49,24 +49,24 @@ function zeroadder(){
                 z1r =0;
                 z2r = 0;
             }
-            document.getElementById("viewzero").innerHTML = z1r.toFixed(2)+" + i "+z1i.toFixed(2)+"<br>"+z1r.toFixed(2)+" - i "+z1i.toFixed(2);
+            document.getElementById("viewzero").innerHTML = (-1*z1r).toFixed(2)+" + i "+z1i.toFixed(2)+"<br>"+(-1*z1r).toFixed(2)+" - i "+z1i.toFixed(2);
             document.getElementById("addzero").disabled=true;
     }
     else if(zerosr!="")
     {
         if(z1r == "")
         {
-            z1r = parseFloat(zerosr);
+            z1r =-1* parseFloat(zerosr);
             z1i=0;
             zeroval=zeroval+1;
-            document.getElementById("viewzero").innerHTML = z1r.toFixed(2);
+            document.getElementById("viewzero").innerHTML = (-1*z1r).toFixed(2);
         }
         else if(z2r == "")
         {
-            z2r = parseFloat(zerosr);
+            z2r = -1*parseFloat(zerosr);
             z2i=0;
             zeroval=zeroval+1;
-            document.getElementById("viewzero").innerHTML = z1r.toFixed(2)+"<br>"+z2r.toFixed(2);
+            document.getElementById("viewzero").innerHTML = (-1*z1r).toFixed(2)+"<br>"+(-1*z2r).toFixed(2);
             document.getElementById("addzero").disabled=true;
         }
     }
@@ -104,7 +104,7 @@ function zeroremover(){
         else
         {z2r ="";
         zeroval = zeroval-1;
-        document.getElementById("viewzero").innerHTML = z1r.toFixed(2);}
+        document.getElementById("viewzero").innerHTML = (-1*z1r).toFixed(2);}
         document.getElementById("addzero").disabled=false;
     }
     else if(zeroval == 1)
