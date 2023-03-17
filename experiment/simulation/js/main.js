@@ -445,6 +445,7 @@ function runprog() {
     if (lc <= 5)
         highlightline(lc);
     else {
+        conclusion = "By adding a zero to the system, the transient response will improve. When zeroes are addded to the system, the stability improves."
         document.getElementById("fconclusions").innerHTML = conclusion;
         document.getElementById("line5").setAttribute("style", "color:black;");
         document.getElementById("mrun").disabled = true;

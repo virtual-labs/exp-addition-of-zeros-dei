@@ -1,10 +1,22 @@
 ### Procedure for the experiment is as follows:
 
-1. Select the experiment you want to perform from the header.
-2. Enter the values of required variables as according to selected experiment.
-3. Submit the values.
-4. Check the input variables in the window below submit button.
-5. If values are entered correctly the MATLAB window will be available.
-6. Sart running the MATLAB program line by line, by clicking the run button.
-7. View the output of each line below the program line, after clicking the run button.
-8. When the complete program is executed, you can view the final graph and results obtained on the right window (incase of desktop/laptops or large screens), whereas the results will be shown below the final program line (incase of smart phones/small screens).
+<p style="margin-left:0px;"><strong>5.1. User Inputs:</strong></p>
+                 <p style="margin-left:20px;">5.1.1. Firstly, adjust the value of the coefficient c of a numerator polynomial by sliding the 
+                            slider.
+                 5.1.2. Now adjust the value of coefficients p, q and r of a denominator polynomial by sliding
+                            the other slider.
+                 5.1.3. Enter the location of zeros Z1 and Z2 by scrolling up or down. 
+                 5.1.4. Click on the “Add Zero” button to add the selected location of zeros and  “Delete Zero”         
+                            button to delete the selected location of zeros.
+                 5.1.5. Press “Submit” button to submit the values of coefficients of numerator and 
+                            denominator polynomial and location of zeros selected.</p>
+
+<p style="margin-left:0px;"><strong>5.2. Calculations:</strong></p>
+                <p style="margin-left:20px;">5.2.1. Click on the  “Run” button to obtain the input transfer function equation.
+                5.2.2. Click on  “Run” button again to obtain the transfer function with 0 zero.
+                5.2.3. Again, click on  “Run”  button to get the transfer function with 1 zero.
+                5.2.4. Once more click on  “Run”  button to get the transfer function with 2 zeros.
+                5.2.5. Again, click on  “Run”  button to get the time domain equation of step response for selected number of zeros in calculation window.</p>
+<p style="margin-left:0px;"><strong>5.3 Results:</strong></p>
+                <p style="margin-left:20px;">5.3.1. Once more click on the  “Run”  button to obtain the step response plot for the addition of zeros to the forward path transfer function of a closed loop system in s-plane in the result section and conclusion in the conclusions section (bottom).</p>
+
