@@ -1,4 +1,4 @@
-### Link your theory in here
+
 The forward path transfer function of general second order system is given by,<br>
 <br>
 <img src="./images/exp5eq1.png">
