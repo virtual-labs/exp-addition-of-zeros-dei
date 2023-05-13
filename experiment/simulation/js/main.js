@@ -445,7 +445,7 @@ function runprog() {
     if (lc <= 5)
         highlightline(lc);
     else {
-        conclusion = "By adding a zero to the system, the transient response will improve. When zeroes are addded to the system, the stability improves."
+        conclusion = "<br>1. On adding one zero, the response becomes faster and the overshoot increses. <br><br> 2. On adding second zero, the numerator order becomes same as the denominator. In this case, steady-state error may be non-zero and thus, response is much different.<br>"
         document.getElementById("fconclusions").innerHTML = conclusion;
         document.getElementById("line5").setAttribute("style", "color:black;");
         document.getElementById("mrun").disabled = true;
