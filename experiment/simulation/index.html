@@ -11,8 +11,8 @@
 	
 
 	<p>
-			 To determine Step and Impulse response of Type 0 2nd order system </p>
-	<a href="./index.html" id="sm1" style="display:none;"></a>
+		To analyze effect of addition of zeroes in closed loop transfer function </p>
+
 </header>
 	<div id="simulation-cont">
 	<div id="enter-val">
@@ -32,11 +32,21 @@
 					<input type="range" name="valuea"  min="0" max="5" list = "datlist" id="denc" onchange="showval() " value="0" onmousemove="showval()" class="range-input">
 					<p>r:<span id="lr"></span></p>
 				</div>
-				<button id="addzero" >Add Zero</button>
-				<button id="delzero">Delete Zero</button>
 				
-				<input id="zero_val" type="number">
-				<span id="viewzero">hello</span>
+				
+				<div class="val-input">
+					
+					<input type="number" name="real_val_zero" id="zr" class="input-val" >
+					<p>&emsp;+&emsp;</p>
+					<input type="number" name="imaginary_value_zero" id="zi" class="input-val" >
+					<p>&emsp;i</p> 
+					<span id="viewzero"></span>
+					<div class="zerodiv">
+					<button id="addzero" class="zerobtn">Add Zero</button>
+					<button id="delzero" class="zerobtn">Delete Zero</button>
+					</div>
+				</div>
+				
 				<button id="input_value" onclick="addval();">Submit</button>
 			<datalist id="datlist">
 				<option value="0" label="0%"></option>
@@ -61,22 +71,25 @@
 			<code id="mat-code">
 				<span id="line1">Input transfer equation</span><br>
 				<span id="out1" class="genout"></span>
-				<span id="line2">Type '0' Step Response transfer equation</span><br>
+				<span id="line2">Transfer function with 0 zeroes</span><br>
 				<span id="out2" class="genout"></span>
-				<span id="line3">Type '0' Impulse Response transfer equation</span><br>
+				<span id="line3">Transfer function with 1 zero</span><br>
 				<span id="out3" class="genout"></span>
+				<span id="line4">Transfer function with 2 zeroes</span><br>
+				<span id="out4" class="genout"></span> 
+				<span id="line5">Plot graph</span><br>
+				<span id="out5" class="genout"></span> 
 				<div id="tanswer"></div>
 				<div class="mob-chart">
 				<div id="chartcont">
 					<canvas id="chartmine1" style="width:100%;"></canvas>
-					<canvas id="chartmine2" style="width:100%;"></canvas>
 					</div>
 				</div>
 				<br>
 			</code>
 
 		</div>
-			<button id="mrun" class=" mrun mrundisabled" onclick="runprog(1);" disabled><p>Run |</p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="whitesmoke" class="bi bi-play" viewBox="0 0 16 16" style="position: relative;">
+			<button id="mrun" class=" mrun mrundisabled" onclick="runprog();" disabled><p>Run |</p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="whitesmoke" class="bi bi-play" viewBox="0 0 16 16" style="position: relative;">
   <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
 </svg></p></button>
 		</div>
@@ -87,7 +100,6 @@
 		</div>
 		<div id="chartcont1">
 			<canvas id="myChart1" style="width:100%;"></canvas>
-			<canvas id="myChart2" style="width:100%;"></canvas>
 		</div>
 		
 	</div>

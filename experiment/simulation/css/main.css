@@ -4,8 +4,14 @@ h1 {
 }
 
 header {
-    height: 10vh;
+    height: 5vh;
     border-bottom: 4px solid cadetblue;
+    padding:5px;
+    max-width: 100%;
+}
+
+header p{
+    margin:0;
 }
 
 #pagechanger {
@@ -53,7 +59,7 @@ body {
 
 #input-statements {
     width: 100%;
-    height: 70vh;
+    height: 81vh;
     background-color: aliceblue;
     padding: 10px 0;
 }
@@ -135,10 +141,43 @@ body {
     border: none;
 }
 #viewzero{
-    height:10px;
+    position: relative;
+    height:auto;
     width: 100%;
+    display: block;
+}
+.zerobtn{
+    position: relative;
+    border: 1px solid #004170;
+    border-radius: 5px;
+    background-color: aquamarine;
+    color: azure;
+    height: 30px;
+    width: 150px;
+    font-size: large;
+}
+.zerobtn:hover{
+    background-color: azure;
+    color: black;
+    transition-duration: 0.5s;
+    cursor: pointer;
 }
 
+.val-input{
+    height: auto;
+    width: 100%;
+    text-align: center;
+      }
+      .val-input h4{
+        display: inline-block;
+        margin: 10px 0px;}
+      .val-input p{
+        display: inline-block;
+        margin: 10px 0px;}
+.input-val{
+    display: inline-block;
+    width: 60px;
+height: 20px;}
 #input_value:hover {
     opacity: 0.9;
     cursor: pointer;
@@ -167,7 +206,7 @@ body {
     width: 35%;
     display: inline-block;
     background-color: aliceblue;
-    height: 75vh;
+    height: 84vh;
 }
 
 .genout {
@@ -265,13 +304,12 @@ body {
     border: 1px solid cadetblue;
     left: 2%;
     background-color: white;
-    overflow-y: scroll;
     display: none;
 }
 
 .right-cont {
     width: 35vw;
-    height: 72vh;
+    height: 84vh;
     background-color: aliceblue;
     float: right;
 }
@@ -340,7 +378,7 @@ header {
 
 .conclusions {
     border-top: 4px solid dodgerblue;
-    height: 16vh;
+    height: 10vh;
     position: relative;
     background-color: aliceblue;
 }
@@ -387,6 +425,10 @@ header {
     .prog-window {
         height: 70%;
     }
+    @media screen and (max-width: 680px) {
+    .matlab-working{
+        margin-top: 15vh;
+    }}
 }
 
 @media screen and (max-width: 550px) {
@@ -401,11 +443,14 @@ header {
 
 @media screen and (max-height: 450px) {
     #input-statements {
-        height: 105vh;
+        height: 140vh;
     }
     .matlab-working {
-        margin-top: 35vh;
+        margin-top: 45vh;
         height: 92vh;
+    }
+    .conclusions{
+        height:20vh
     }
 }
 
