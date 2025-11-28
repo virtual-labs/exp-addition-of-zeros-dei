@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Equating the numerator to zero gives ___ and equating denominator to zero gives us ___ ?",
+      "question": "1. Equating the numerator to zero gives ___ and equating denominator to zero gives us ___ ?",
       "answers": {
         "a": "Poles, Zeroes",
         "b": "Zeroes, Poles",
@@ -14,7 +14,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "A transfer function has two zeroes at infinity. <br> The numerator degree (N) and denominator degree (M) are related as : ",
+      "question": "2. A transfer function has two zeroes at infinity. <br> The numerator degree (N) and denominator degree (M) are related as ? ",
       "answers": {
         "a": "N = M - 1",
         "b": "M = N - 2",
@@ -25,7 +25,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "The principle of homogeneity and principle of superposition are applicable to ",
+      "question": "3. The principle of homogeneity and principle of superposition are applicable to ? ",
       "answers": {
         "a": "Linear Time Invariant System",
         "b": "Linear Time Variant System",
@@ -36,7 +36,7 @@
       "difficulty": "beginner"
     },
         {
-      "question": "The transfer function of is the ratio of",
+      "question": "4. The transfer function of is the ratio of ?",
       "answers": {
         "a": "Laplace transform of Input to that of the Output",
         "b": "Fourier transform of Input to that of the Output",
@@ -47,7 +47,7 @@
       "difficulty": "beginner"
     },
         {
-      "question": "Which of the following statement is correct?",
+      "question": "5. Which of the following statement is correct?",
       "answers": {
         "a": "The value of transfer function is zero at poles.",
         "b": "The value of transfer function is infinity at zeroes.",

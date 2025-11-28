@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "If we add zero in RHP to the transfer function, step response slows down and it makes the system?",
+      "question": "1. If we add zero in RHP to the transfer function, step response slows down and it makes the system?",
       "answers": {
         "a": "Overshoot",
         "b": "Undershoot",
@@ -14,7 +14,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "When zero added in closed loop transfer function, the rise time and peak time?",
+      "question": "2. When zero added in closed loop transfer function, the rise time and peak time?",
       "answers": {
         "a": "Decreases",
         "b": "Increases",
@@ -25,7 +25,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "What happens after adding zero to closed loop transfer function. It makes the system overall response?",
+      "question": "3. What happens after adding zero to closed loop transfer function. It makes the system overall response?",
       "answers": {
         "a": "Slow",
         "b": "Fast",
@@ -36,7 +36,7 @@
       "difficulty": "beginner"
     },
         {
-      "question": " What happens when  a zero is added at origin?",
+      "question": "4. What happens when  a zero is added at origin?",
       "answers": {
         "a": "Transient response improves",
         "b": "Steady state errror reduces",
@@ -48,7 +48,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "As zero move left from the origin, the effect of zero?",
+      "question": "5. As zero move left from the origin, the effect of zero?",
       "answers": {
         "a": "Increases",
         "b": "Decreases",
